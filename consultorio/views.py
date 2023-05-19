@@ -13,7 +13,7 @@ def dashboard(request):
         usuario = request.GET['usuario']
         all_clients = patient.objects.filter(Q(first_name__icontains=patient) | Q(last_name__icontains=patient))
     else:
-        all_clients = patient.objects.all().order_by('last_name')
+        all_clients = patient.objects.filter(is_active=1).order_by('last_name')
         all_user = User.objects.all()
         paginator = Paginator(all_clients, 5)
         page_number = request.GET.get('page')
@@ -87,7 +87,8 @@ def patient_details(request, client_id=None):
     else:
         current_bmi = None
 
-    return render(request, 'consultorio/client_info.html', {'client': client, 'all_client': all_client,'all_consult': all_consult, 'bmi': bmi,'current_bmi': current_bmi})
+    return render(request, 'consultorio/client_info.html', {'client': client, 'all_client': all_client,
+                                                            'all_consult': all_consult, 'bmi': bmi,'current_bmi': current_bmi})
 
 def patient_progress(request):
     client_id = request.GET.get('client_id')

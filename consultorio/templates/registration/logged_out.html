@@ -17,11 +17,17 @@
         margin-bottom: 10px;
     }
 
-    .btn {
+    .conteiner{
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 10%;
+    }
+    .conteiner .btn {
         display: inline-block;
         padding: 10px 20px;
         font-size: 16px;
-        background-color: #4CAF50;
+        background-color: #000;
         color: white;
         text-decoration: none;
         border: none;
@@ -30,15 +36,16 @@
     }
 
     .btn:hover {
-        background-color: #45a049;
+        background-color: #808080;
     }
 </style>
 
+    <div class = conteiner >
+        <h1>Sesión cerrada!</h1>
+        <p>Haz cerrado sesión exitosamente</p>
+        <p>Regresar al menú principal</p>
+        <a class="btn btn-primary" href="{% url 'dashboard' %}" role="button">Menú principal</a>
+</div>
 
-
-<h1>Sesión cerrada!</h1>
-<p>Haz cerrado sesión exitosamente</p>
-<p>Regresar al menú principal</p>
-<a class="btn btn-primary" href="{% url 'dashboard' %}" role="button">Menú principal</a>
 
 {% endblock %}
